@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boy</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+    /* Reset CSS */
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+    /* Navbar Styling */
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #D0DDE6;
+        padding: 0.8rem 1.5rem;
+        color: rgba(0, 0, 0, 0.753);
+        position: relative;
+    }
+
+    /* Toggle button on the left */
+    .navbar-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: rgba(0, 0, 0, 0.753);
+        font-size: 1.5rem;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    .navbar-left {
+        display: flex;
+        align-items: center;
+    }
+
+    .navbar-logo a {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: rgba(0, 0, 0, 0.753);
+        text-decoration: none;
+    }
+
+    .navbar-menu {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        justify-content: center;
+        /* Center items horizontally */
+        flex-grow: 1;
+        /* Allow it to take available space */
+    }
+
+
+    .navbar-menu li {
+        position: relative;
+        list-style: none;
+    }
+
+    .navbar-menu a {
+        color: rgba(0, 0, 0, 0.753);
+        padding: 0.5rem 1rem;
+        display: block;
+        text-decoration: none;
+    }
+
+    /* Dropdown Menu */
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #163d3b;
+        padding: 0.5rem 0;
+        border-radius: 4px;
+        z-index: 1000;
+        min-width: 150px;
+    }
+
+    .dropdown-menu.show {
+        display: block;
+    }
+
+
+    .dropdown-menu a {
+        padding: 0.5rem 1rem;
+        display: block;
+        color: white;
+    }
+
+    .dropdown-menu a:hover {
+        background-color: #0056b3;
+    }
+
+    /* Buttons */
+    .navbar-buttons {
+        display: flex;
+        gap: 0.5rem;
+        margin-left: auto;
+    }
+
+    .btn {
+        padding: 0.3rem 0.8rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.85rem;
+    }
+
+
+    .btn.secondary {
+        background-color: #f8f9fa;
+        color: #333;
+    }
+
+    .btn.secondary:hover {
+        background-color: #e2e6ea;
+    }
+
+
+    /* Blinking Animation */
+    @keyframes blink {
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .btn.primary {
+        background-color: #007bff;
+        color: white;
+        animation: blink 1s infinite;
+        /* Apply the blink animation */
+    }
+
+    .btn.primary:hover {
+        background-color: #0056b3;
+        animation: none;
+        /* Stop blinking on hover */
+    }
+
+    /* Responsive Navbar */
+    @media (max-width: 768px) {
+        .navbar {
+            flex-wrap: wrap;
+            justify-content: center;
+            /* Center the logo */
+            position: relative;
+        }
+
+        .navbar-toggle {
+            display: block;
+            position: absolute;
+            left: 1.5rem;
+            /* Position the toggle button to the left */
+        }
+
+        .navbar-logo {
+            text-align: center;
+            /* Center the logo text */
+        }
+
+        .navbar-menu {
+            display: none;
+            flex-direction: column;
+            background-color: #D0DDE6;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .navbar-menu.show {
+            display: flex;
+        }
+
+        /* Keep buttons visible in responsive */
+        .navbar-buttons {
+            display: flex;
+            position: absolute;
+            right: 1.5rem;
+            /* Position the buttons to the right */
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .btn {
+            padding: 0.3rem 0.8rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .btn.secondary {
+            display: none;
+        }
+
+    }
+
+    .tel_a,
+    .whatsapp_a {
+        position: fixed;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        border-radius: 50%;
+        z-index: 1000;
+        text-decoration: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .tel_a {
+        right: 11px;
+        /* top: 65%; */
+        bottom: 20%;
+        background-color: #9d0d93;
+    }
+
+    .whatsapp_a {
+        right: 11px;
+        /* top: 75%; */
+        bottom: 20%;
+        background-color: #25D366;
+    }
+
+    /* Icon size */
+    .fa-phone,
+    .fa-whatsapp {
+        font-size: 20px;
+    }
+</style>
+
+<body>
+
+    <a href="tel:+91-9876543210" class="tel_a" style="right: 21px; bottom: 105px; background-color: #9d0d93;"
+        target="_blank" rel="noreferrer noopener">
+        <i class="fa fa-phone" aria-hidden="true"></i>
+    </a>
+    <a href="https://wa.me/+91-987654321" class="whatsapp_a"
+        style="right: 21px; bottom: 30px; background-color: #25D366;" target="_blank" rel="noreferrer noopener">
+        <i class="fab fa-whatsapp whatsapp-logo"></i>
+    </a>
+
+    <header>
+        <nav class="navbar">
+            <div class="navbar-left">
+                <button class="navbar-toggle" aria-label="Toggle navigation">☰</button>
+                <div class="navbar-logo">
+                    <a href="#">MyLogo</a>
+                </div>
+            </div>
+
+            <ul class="navbar-menu">
+                <li><a href="#">Home</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Services</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">Design</a></li>
+                        <li><a href="#">Marketing</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+
+            <div class="navbar-buttons">
+                <button class="btn primary">Contact-Us</button>
+            </div>
+        </nav>
+    </header>
+
+
+
+    <script>
+
+        // Toggle for the responsive navbar menu
+        const navbarToggle = document.querySelector('.navbar-toggle');
+        const navbarMenu = document.querySelector('.navbar-menu');
+
+        navbarToggle.addEventListener('click', () => {
+            navbarMenu.classList.toggle('show');
+        });
+
+        // Toggle for the dropdown menu
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        dropdownToggle.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent default link behavior
+            dropdownMenu.classList.toggle('show'); // Toggle the dropdown menu
+        });
+
+        // Optional: Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.classList.remove('show');
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
